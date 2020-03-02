@@ -20,29 +20,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        login_email=(EditText)findViewById(R.id.login_email);
-        login_password=(EditText)findViewById(R.id.login_password);
-        click_register=(TextView)findViewById(R.id.click_register);
+        login_email = (EditText) findViewById(R.id.login_email);
+        login_password = (EditText) findViewById(R.id.login_password);
+        click_register = (TextView) findViewById(R.id.click_register);
     }
 
-    public void login(View view)
-    {
-        String email=login_email.getText().toString();
-        String password=login_password.getText().toString();
+    public void login(View view) {
+        String email = login_email.getText().toString();
+        String password = login_password.getText().toString();
 
-        if(email.equals("soumo") && password.equals("123"))
-        {
-            Toast.makeText(this,"Login sucessfull",Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(this,"Login Failt",Toast.LENGTH_LONG).show();
+        if (email.equals("soumo") && password.equals("123")) {
+            Toast.makeText(this, "Login sucessfull", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Login Failt", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void go_register(View view)
-    {
-        Intent intent=new Intent(MainActivity.this,Register.class);
+    public void go_register(View view) {
+        Intent intent = new Intent(MainActivity.this, Register.class);
         startActivity(intent);
+        finish();
     }
 }

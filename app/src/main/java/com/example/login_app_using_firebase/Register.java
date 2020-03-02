@@ -1,5 +1,6 @@
 package com.example.login_app_using_firebase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +9,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Register extends AppCompatActivity {
 
     private EditText register_name;
     private EditText register_email;
     private EditText register_password;
     private EditText register_retype_password;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -21,6 +28,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        firebaseAuth=FirebaseAuth.getInstance();
         register_name=(EditText)findViewById(R.id.register_name);
         register_email=(EditText)findViewById(R.id.register_email);
         register_password=(EditText)findViewById(R.id.register_password);
@@ -36,7 +44,9 @@ public class Register extends AppCompatActivity {
         String retype_password=register_retype_password.getText().toString();
         if(verify(name,email,password,retype_password))
         {
+            register_user(name,email,password);
             Intent intent=new Intent(Register.this,MainActivity.class);
+            //startActivity(intent);
         }
 
     }
@@ -63,5 +73,22 @@ public class Register extends AppCompatActivity {
     {
         Intent intent=new Intent(Register.this,MainActivity.class);
         startActivity(intent);
+    }
+
+    public void register_user(String name,String email,String password)
+    {
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(Register.this,"Registation complete",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(Register.this,"Registation failed",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }

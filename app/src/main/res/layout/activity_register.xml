@@ -9,8 +9,8 @@
     <EditText
         android:id="@+id/register_name"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Name"
         android:inputType="textEmailAddress"
@@ -19,10 +19,10 @@
 
     <EditText
         android:id="@+id/register_email"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/register_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/register_name"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -31,10 +31,10 @@
 
     <EditText
         android:id="@+id/register_password"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/register_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/register_email"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -44,9 +44,9 @@
     <EditText
         android:id="@+id/register_retype_password"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/register_password"
         android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Retype password"
         android:inputType="textPassword"
@@ -56,22 +56,22 @@
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/register_retype_password"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:layout_below="@+id/register_retype_password"
+        android:layout_centerHorizontal="true"
         android:onClick="register"
+        android:text="Register"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="526dp" />
 
     <TextView
         android:id="@+id/click_login"
-        android:onClick="go_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click hare to login"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/register"
+        android:layout_centerHorizontal="true"
+        android:onClick="go_login"
+        android:text="Click hare to login"
         tools:layout_editor_absoluteX="171dp"
         tools:layout_editor_absoluteY="609dp" />
 </RelativeLayout>
