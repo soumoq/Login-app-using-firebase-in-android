@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
@@ -22,6 +24,7 @@ public class Register extends AppCompatActivity {
     private EditText register_password;
     private EditText register_retype_password;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -29,6 +32,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("register");
         firebaseAuth = FirebaseAuth.getInstance();
         register_name = (EditText) findViewById(R.id.register_name);
         register_email = (EditText) findViewById(R.id.register_email);
@@ -68,19 +72,60 @@ public class Register extends AppCompatActivity {
         finish();
     }
 
-    public void register_user(String name, String email, String password) {
+    public void register_user(final String name, final String email, final String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!task.isSuccessful()){
-                    FirebaseAuthException e = (FirebaseAuthException)task.getException();
-                    Toast.makeText(Register.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                if (!task.isSuccessful()) {
+                    FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                    Toast.makeText(Register.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else {
+                } else {
+                    storeData(name,email,password);
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
+    }
+    public void storeData(String name,String email,String password)
+    {
+        String id = databaseReference.push().getKey();
+        Get_Register_Data get_register_data = new Get_Register_Data(id, name, email, password);
+        databaseReference.push().setValue(get_register_data);
+    }
+}
+
+class Get_Register_Data {
+    private String id;
+    private String name;
+    private String email;
+    private String password;
+
+    public Get_Register_Data() {
+    }
+
+    public Get_Register_Data(String id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

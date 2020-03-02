@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">login_app_using_firebase</string>
+
+    <array name="genres">
+        <item>Rock</item>
+        <item>Pop</item>
+        <item>Hip-hop</item>
+        <item>Solo</item>
+
+    </array>
 </resources>

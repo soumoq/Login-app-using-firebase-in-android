@@ -10,7 +10,37 @@
         android:id="@+id/user_info_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="Hello"
         tools:layout_editor_absoluteX="171dp"
         tools:layout_editor_absoluteY="60dp" />
+
+    <EditText
+        android:id="@+id/user_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_info_email"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Artist"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_artist_type"
+        android:layout_centerHorizontal="true"
+        android:onClick="add_Artist"
+        android:text="Add artist" />
+
+    <Spinner
+        android:id="@+id/user_artist_type"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/user_artist"
+        android:layout_height="wrap_content"
+        android:entries="@array/genres" />
+
+
 </RelativeLayout>
