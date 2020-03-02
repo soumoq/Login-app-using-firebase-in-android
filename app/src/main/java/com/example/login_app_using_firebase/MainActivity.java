@@ -34,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() != null)
         {
-            Toast.makeText(MainActivity.this,"User is already login",Toast.LENGTH_LONG).show();
+            Intent intent=new Intent(MainActivity.this,Home.class);
+            startActivity(intent);
+
         }
+
+
     }
 
     public void login(View view) {
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent=new Intent(MainActivity.this,Home.class);
                     intent.putExtra("email",email);
                     startActivity(intent);
+                    finish();
                 }
                 else
                 {

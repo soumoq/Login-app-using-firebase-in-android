@@ -18,5 +18,7 @@ public class Home extends AppCompatActivity {
 
         String email=getIntent().getStringExtra("email");
         user_info_email.setText("Hello "+email);
+
+
     }
 }
