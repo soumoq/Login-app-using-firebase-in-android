@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 
 public class Register extends AppCompatActivity {
 
@@ -64,16 +65,20 @@ public class Register extends AppCompatActivity {
     public void go_login() {
         Intent intent = new Intent(Register.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void register_user(String name, String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Register.this, "Registration complete", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(Register.this, "Registration failed", Toast.LENGTH_LONG).show();
+                if(!task.isSuccessful()){
+                    FirebaseAuthException e = (FirebaseAuthException)task.getException();
+                    Toast.makeText(Register.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
                 }
             }
         });
