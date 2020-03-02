@@ -1,77 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Register">
 
     <EditText
         android:id="@+id/register_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
+        android:layout_margin="5dp"
+        android:ems="15"
         android:hint="Name"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="148dp" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/register_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_name"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
+        android:layout_margin="5dp"
+        android:ems="15"
         android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="244dp" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/register_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_email"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
+        android:layout_margin="5dp"
+        android:ems="15"
         android:hint="Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="338dp" />
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/register_retype_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_password"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
+        android:layout_margin="5dp"
+        android:ems="15"
         android:hint="Retype password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="431dp" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_retype_password"
-        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
         android:onClick="register"
-        android:text="Register"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="526dp" />
+        android:text="Register" />
 
     <TextView
         android:id="@+id/click_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register"
-        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
         android:onClick="go_login"
         android:text="Click hare to login"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="609dp" />
-</RelativeLayout>
+        android:textSize="20sp"
+        android:textStyle="italic" />
+</LinearLayout>

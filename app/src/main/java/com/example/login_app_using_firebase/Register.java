@@ -66,7 +66,7 @@ public class Register extends AppCompatActivity {
         return false;
     }
 
-    public void go_login() {
+    public void go_login(View view) {
         Intent intent = new Intent(Register.this, MainActivity.class);
         startActivity(intent);
         finish();
