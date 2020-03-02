@@ -81,16 +81,22 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    storeData(name,email,password);
+                    storeData(name, email, password);
                     Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_LONG).show();
+                    goToHome();
                 }
             }
         });
 
+    }
+
+    public void goToHome() {
+        Intent intent = new Intent(Register.this, Home.class);
+        startActivity(intent);
 
     }
-    public void storeData(String name,String email,String password)
-    {
+
+    public void storeData(String name, String email, String password) {
         String id = databaseReference.push().getKey();
         Get_Register_Data get_register_data = new Get_Register_Data(id, name, email, password);
         databaseReference.push().setValue(get_register_data);

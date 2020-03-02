@@ -27,14 +27,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         login_email = (EditText) findViewById(R.id.login_email);
         login_password = (EditText) findViewById(R.id.login_password);
         click_register = (TextView) findViewById(R.id.click_register);
 
-        if(firebaseAuth.getCurrentUser() != null)
-        {
-            Intent intent=new Intent(MainActivity.this,Home.class);
+        if (firebaseAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(MainActivity.this, Home.class);
             startActivity(intent);
         }
 
@@ -45,26 +44,25 @@ public class MainActivity extends AppCompatActivity {
         String email = login_email.getText().toString();
         String password = login_password.getText().toString();
 
-       login_validation(email,password);
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "field are empty", Toast.LENGTH_LONG).show();
+        } else
+            login_validation(email, password);
     }
 
-    private void login_validation(final String email, String password)
-    {
+    private void login_validation(final String email, String password) {
 
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    Toast.makeText(MainActivity.this,"Login successful",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(MainActivity.this,Home.class);
-                    intent.putExtra("email",email);
+                if (task.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, Home.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     finish();
-                }
-                else
-                {
-                    Toast.makeText(MainActivity.this,"Login failed",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_LONG).show();
                 }
             }
         });

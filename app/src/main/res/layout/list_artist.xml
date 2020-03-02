@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/artist_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="99dp" />
 
     <TextView
         android:id="@+id/artist_type"
-        android:layout_below="@+id/artist_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/artist_name"
         android:text="TextView"
         tools:layout_editor_absoluteX="-13dp"
         tools:layout_editor_absoluteY="7dp" />

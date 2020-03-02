@@ -37,16 +37,16 @@
     <Spinner
         android:id="@+id/user_artist_type"
         android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/user_artist"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/user_artist"
+        android:layout_centerHorizontal="true"
         android:entries="@array/genres" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_below="@+id/button"
         android:id="@+id/artist_listview"
-        android:layout_height="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/button" />
 
 
 </RelativeLayout>

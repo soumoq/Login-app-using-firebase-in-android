@@ -12,31 +12,30 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class ArtistList extends ArrayAdapter<Artist>{
+public class ArtistList extends ArrayAdapter<Artist> {
     private Activity context;
     private List<Artist> artistList;
 
-    public ArtistList(Activity context,List<Artist> artistList)
-    {
-        super(context,R.layout.list_artist,artistList);
-        this.context=context;
-        this.artistList=artistList;
+    public ArtistList(Activity context, List<Artist> artistList) {
+        super(context, R.layout.list_artist, artistList);
+        this.context = context;
+        this.artistList = artistList;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater=context.getLayoutInflater();
-        View listViewItem = inflater.inflate(R.layout.list_artist,null,true);
+        LayoutInflater inflater = context.getLayoutInflater();
+        View listViewItem = inflater.inflate(R.layout.list_artist, null, true);
 
-        TextView artist_name=(TextView)listViewItem.findViewById(R.id.artist_name);
-        TextView artist_type=(TextView)listViewItem.findViewById(R.id.artist_type);
+        TextView artist_name = (TextView) listViewItem.findViewById(R.id.artist_name);
+        TextView artist_type = (TextView) listViewItem.findViewById(R.id.artist_type);
 
-        Artist artist=artistList.get(position);
+        Artist artist = artistList.get(position);
         artist_name.setText(artist.getArtist_Name());
         artist_type.setText(artist.getArtist_type());
 
-        return  listViewItem;
+        return listViewItem;
 
     }
 }
