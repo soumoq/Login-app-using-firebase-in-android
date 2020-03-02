@@ -19,10 +19,10 @@
 
     <EditText
         android:id="@+id/login_password"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login_email"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -31,10 +31,10 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login_password"
+        android:layout_centerHorizontal="true"
         android:onClick="login"
         android:text="Login"
         tools:layout_editor_absoluteX="134dp"
@@ -42,10 +42,10 @@
 
     <TextView
         android:id="@+id/click_register"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
         android:onClick="go_register"
         android:text="click hare to register"
         tools:layout_editor_absoluteX="142dp"

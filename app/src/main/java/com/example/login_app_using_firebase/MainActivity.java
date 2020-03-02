@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         String password = login_password.getText().toString();
 
         if (email.equals("soumo") && password.equals("123")) {
-            Toast.makeText(this, "Login sucessfull", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Login successful", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Login Failt", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
         }
     }
 

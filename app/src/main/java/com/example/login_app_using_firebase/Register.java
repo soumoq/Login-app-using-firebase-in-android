@@ -28,65 +28,52 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        register_name=(EditText)findViewById(R.id.register_name);
-        register_email=(EditText)findViewById(R.id.register_email);
-        register_password=(EditText)findViewById(R.id.register_password);
-        register_retype_password=(EditText)findViewById(R.id.register_retype_password);
+        firebaseAuth = FirebaseAuth.getInstance();
+        register_name = (EditText) findViewById(R.id.register_name);
+        register_email = (EditText) findViewById(R.id.register_email);
+        register_password = (EditText) findViewById(R.id.register_password);
+        register_retype_password = (EditText) findViewById(R.id.register_retype_password);
 
     }
 
-    public void register(View view)
-    {
-        String name=register_name.getText().toString();
-        String email=register_email.getText().toString();
-        String password=register_password.getText().toString();
-        String retype_password=register_retype_password.getText().toString();
-        if(verify(name,email,password,retype_password))
-        {
-            register_user(name,email,password);
-            Intent intent=new Intent(Register.this,MainActivity.class);
+    public void register(View view) {
+        String name = register_name.getText().toString();
+        String email = register_email.getText().toString();
+        String password = register_password.getText().toString();
+        String retype_password = register_retype_password.getText().toString();
+        if (verify(name, email, password, retype_password)) {
+            register_user(name, email, password);
+            Intent intent = new Intent(Register.this, MainActivity.class);
             //startActivity(intent);
         }
 
     }
 
 
-    private boolean verify(String name, String email, String password, String retype_password)
-    {
-        if(name.isEmpty() || email.isEmpty() || password.isEmpty() || retype_password.isEmpty())
-        {
-            Toast.makeText(this,"The text fild are empty",Toast.LENGTH_LONG).show();
-        }
-        else if(!password.equals(retype_password))
-        {
-            Toast.makeText(this,"password misematch",Toast.LENGTH_LONG).show();
-        }
-        else
-        {
+    private boolean verify(String name, String email, String password, String retype_password) {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || retype_password.isEmpty()) {
+            Toast.makeText(this, "Text field should not be empty", Toast.LENGTH_LONG).show();
+        } else if (!password.equals(retype_password)) {
+            Toast.makeText(this, "password mismatch", Toast.LENGTH_LONG).show();
+        } else {
             return true;
         }
         return false;
     }
 
-    public void go_login()
-    {
-        Intent intent=new Intent(Register.this,MainActivity.class);
+    public void go_login() {
+        Intent intent = new Intent(Register.this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void register_user(String name,String email,String password)
-    {
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+    public void register_user(String name, String email, String password) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
-                    Toast.makeText(Register.this,"Registation complete",Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    Toast.makeText(Register.this,"Registation failed",Toast.LENGTH_LONG).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(Register.this, "Registration complete", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(Register.this, "Registration failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
