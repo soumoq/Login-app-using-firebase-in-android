@@ -1,5 +1,5 @@
 # Login-app-using-firebase-in-android
-Here we can login ,register and add our favorite artist the data store into firebase database
+Here we can log in,register and add our favourite artist the data will store into firebase database.
 
 Login \
 ![Image](Login.png)
