@@ -6,3 +6,4 @@ Register
 ![Image](Register.png )
 Add artist
 ![Image](Add_Artist.png )
+
